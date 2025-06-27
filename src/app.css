@@ -1,5 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 @import "tailwindcss";
+
+:root {
+	@apply bg-gray-100 font-[Space_Grotesk];
+}
 
 @utility btn {
 	@apply cursor-pointer rounded bg-white px-4 py-1 text-xl outline-2 transition hover:scale-110;
@@ -14,5 +19,5 @@
 }
 
 @utility inp {
-	@apply rounded outline-none border-2 border-gray-300 bg-white px-2 py-1 text-lg outline-2 transition focus:border-blue-500 focus:outline-blue-500;
+	@apply rounded border-2 border-gray-300 bg-white px-2 py-1 text-lg outline-2 transition outline-none focus:border-blue-500 focus:outline-blue-500;
 }

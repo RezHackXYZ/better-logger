@@ -1,14 +1,22 @@
 <script>
+	import Nav from "$lib/modules/nav/nav.svelte";
+	import Popup from "$lib/modules/popup/popup.svelte";
+	import Window from "$lib/modules/setings/window.svelte";
+
+	import { showSetings } from "$lib/modules/setings/showStore.js";
+
 	import { Toaster } from "svelte-5-french-toast";
-	import '../app.css';
+	import "../app.css";
 
 	let { children } = $props();
 </script>
 
 <Toaster />
 
-<div class="bg-white h-full font-[Space_Grotesk]">{@render children()}</div>
+<Popup showPopup={$showSetings}>
+	<Window />
+</Popup>
 
-<style>
-	@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
-</style>
+<Nav />
+
+<div class="box-border h-full">{@render children()}</div>

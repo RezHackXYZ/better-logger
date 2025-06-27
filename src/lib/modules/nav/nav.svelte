@@ -1,10 +1,8 @@
 <script>
 	import { showSetings } from "../setings/showStore.js";
-
-    
 </script>
 
-<div class="flex h-full flex-col gap-3 p-5 px-10">
+<div class="flex flex-col gap-3 p-5 px-10">
 	<div class="flex items-center justify-between px-5 text-4xl">
 		<span>
 			a much better hackatime time logger
