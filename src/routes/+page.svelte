@@ -1,19 +1,17 @@
 <script>
+	import Nav from "$lib/modules/nav/nav.svelte";
+	import Popup from "$lib/modules/popup/popup.svelte";
+	import Window from "$lib/modules/setings/window.svelte";
 
-	import { onMount } from "svelte";
-	import { slackID, Hackatime } from "$lib/store.js";
-	import NoKey from "$lib/views/NoKey/NoKey.svelte";
-
-	onMount(() => {
-		slackID.set(localStorage.getItem("slackID") || "");
-		Hackatime.set(localStorage.getItem("Hackatime") || "");
-	});
+	import { showSetings } from "$lib/modules/setings/showStore.js";
+	import App from "./app.svelte";
 </script>
 
-<div class="flex h-full items-center justify-center">
-	<div>
-		{#if $slackID == "" || $Hackatime == ""}
-			<NoKey />
-		{/if}
-	</div>
+<Popup showPopup={$showSetings}>
+	<Window />
+</Popup>
+
+<div class="flex h-screen flex-col">
+	<Nav />
+	<div class="flex-1"><App /></div>
 </div>
