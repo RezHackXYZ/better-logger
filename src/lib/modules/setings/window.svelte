@@ -20,17 +20,17 @@
 
 		showSetings.set(false);
 
-        toast.success("Settings saved successfully!");
+		toast.success("Settings saved successfully!");
 	}
 </script>
 
 <div class="flex flex-col">
-	<label for="slackID">Slack ID:</label>
+	<label for="slackID" class="text-black dark:text-white">Slack ID:</label>
 	<input bind:value={tempSlackID} class="inp" id="slackID" type="text" placeholder="U*********" />
 </div>
 
 <div class="flex flex-col">
-	<label for="Hackatime">Hackatime API Key:</label>
+	<label for="Hackatime" class="text-black dark:text-white">Hackatime API Key:</label>
 	<input
 		bind:value={tempHackatime}
 		class="inp"
