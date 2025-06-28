@@ -4,17 +4,18 @@
 
 <div class="flex flex-col gap-3 p-5 px-10">
 	<div class="flex items-center justify-between px-5 text-4xl">
-		<span>
-			a much better hackatime time logger
-
+		<div class="flex flex-col gap-1">
+			<span> a better adventure time logger </span>
 			<span class="text-lg text-gray-600">
+				(only useable with neighborhood projects for now)
+
+				<!-- 
 				made by
 
-				<a href="https://rezhack.xyz" target="_blank" class="text-blue-600 underline">
-					RezHackXYZ
-				</a>
+				<a href="https://rezhack.xyz" target="_blank" class="text-blue-600 underline"> RezHackXYZ </a>
+				-->
 			</span>
-		</span>
+		</div>
 
 		<button
 			aria-label="open settings"

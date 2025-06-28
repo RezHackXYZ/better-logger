@@ -22,6 +22,8 @@
 		const res = await response.json();
 		HackatimeProjects = res.projects;
 	}
+
+	let selectedHackatimeProjectName = null;
 </script>
 
 {#if Apps != null}
@@ -38,15 +40,19 @@
 
 	{#if selectedAppName != null}
 		<div class="flex flex-col">
-			<label for="app">Select a Hackatime project for {selectedAppName}!</label>
-			<select class="inp" onchange={selectedApp} bind:value={selectedAppName} id="app">
-				<option value={null} disabled selected>Select a app!</option>
+			<label for="hackatimeProject">Select a Hackatime project for {selectedAppName}!</label>
+			<select class="inp" bind:value={selectedHackatimeProjectName} id="hackatimeProject">
+				<option value={null} disabled selected>Select a Hackatime project!</option>
 
 				{#each HackatimeProjects as project}
 					<option value={project.name}>{project.name}</option>
 				{/each}
 			</select>
 		</div>
+
+		{#if selectedHackatimeProjectName != null}
+			<button class="btn green">Start Logging Time!</button>
+		{/if}
 	{/if}
 {:else}
 	loading...
