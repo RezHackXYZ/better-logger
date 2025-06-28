@@ -1,18 +1,53 @@
 <script>
 	import { slackID } from "$lib/store";
+	import { onMount } from "svelte";
 
-	//sendHeartbeat
+	let Apps = null;
+	let HackatimeProjects = null;
 
-	fetch(`https://adventure-time.hackclub.dev/api/getUnloggedTimeForUser?slackId=${$slackID}`)
-		.then((res) => res.json())
-		.catch((err) => {
-			console.error("Error fetching apps:", err);
-		});
+	onMount(async () => {
+		const response = await fetch(
+			`https://corsproxy.io/?https://adventure-time.hackclub.dev/api/getUnloggedTimeForUser?slackId=${$slackID}`,
+		);
+		const res = await response.json();
+		Apps = res.apps;
+	});
+
+	let selectedAppName = null;
+
+	async function selectedApp(selectedAppName) {
+		const response = await fetch(
+			`https://corsproxy.io/?https://adventure-time.hackclub.dev/api/getAppUserHackatimeProjects?slackId=${$slackID}&appName=${selectedAppName.target ? selectedAppName.target.value : selectedAppName}`,
+		);
+		const res = await response.json();
+		HackatimeProjects = res.projects;
+	}
 </script>
 
-Select a app:
-<select name="" id="">
-	{#each res as}
-		<option value=""></option>
-	{/each}</select
->
+{#if Apps != null}
+	<div class="flex flex-col">
+		<label for="app">Select a app!</label>
+		<select class="inp" onchange={selectedApp} bind:value={selectedAppName} id="app">
+			<option value={null} disabled selected>Select a app!</option>
+
+			{#each Object.keys(Apps) as app}
+				<option value={app}>{app}</option>
+			{/each}
+		</select>
+	</div>
+
+	{#if selectedAppName != null}
+		<div class="flex flex-col">
+			<label for="app">Select a Hackatime project for {selectedAppName}!</label>
+			<select class="inp" onchange={selectedApp} bind:value={selectedAppName} id="app">
+				<option value={null} disabled selected>Select a app!</option>
+
+				{#each HackatimeProjects as project}
+					<option value={project.name}>{project.name}</option>
+				{/each}
+			</select>
+		</div>
+	{/if}
+{:else}
+	loading...
+{/if}
