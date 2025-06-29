@@ -54,7 +54,7 @@
 
 	function updateElapsedTime() {
 		const now = new Date();
-		const diff = now - timeStarted;
+		const diff = now.getTime() - timeStarted.getTime();
 
 		const hours = Math.floor(diff / (1000 * 60 * 60));
 		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));

@@ -1,5 +1,5 @@
 <script>
-	import { showSetings } from "../setings/showStore.js";
+	import { showSettings } from "../Settings/showStore.js";
 </script>
 
 <div class="flex flex-col gap-3 p-5 px-10">
@@ -19,7 +19,7 @@
 
 		<button
 			aria-label="open settings"
-			on:click={() => showSetings.set(true)}
+			on:click={() => showSettings.set(true)}
 			class="cursor-pointer text-black transition-transform hover:scale-110 dark:text-white"
 		>
 			<i class="nf nf-cod-settings_gear"></i>

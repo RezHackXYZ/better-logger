@@ -1,5 +1,5 @@
 <script>
-	import { showSetings } from "$lib/modules/setings/showStore.js";
+	import { showSettings } from "$lib/modules/Settings/showStore.js";
 	import { slackID, Hackatime } from "$lib/store.js";
 	import toast from "svelte-5-french-toast";
 
@@ -18,7 +18,7 @@
 		localStorage.setItem("slackID", tempSlackID);
 		localStorage.setItem("Hackatime", tempHackatime);
 
-		showSetings.set(false);
+		showSettings.set(false);
 
 		toast.success("Settings saved successfully!");
 	}
@@ -41,6 +41,6 @@
 </div>
 
 <div class="flex justify-evenly">
-	<button class="btn red" onclick={() => showSetings.set(false)}>Cancel</button>
+	<button class="btn red" onclick={() => showSettings.set(false)}>Cancel</button>
 	<button class="btn green" onclick={save}>Save</button>
 </div>
