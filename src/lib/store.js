@@ -6,5 +6,6 @@ export let Hackatime = writable(null);
 export let selectedAppName = writable(null);
 export let selectedHackatimeProjectName = writable(null);
 
+export let currentView = writable("menu");
 
 export let UsedHackatimeProjectName = writable(null);

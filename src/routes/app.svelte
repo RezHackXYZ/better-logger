@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from "svelte";
-	import { slackID, Hackatime } from "$lib/store.js";
+	import { slackID, Hackatime, currentView } from "$lib/store.js";
 	import NoKey from "$lib/views/NoKey/NoKey.svelte";
 	import Select from "$lib/views/select/select.svelte";
+	import Logging from "$lib/views/logging/logging.svelte";
 
 	onMount(() => {
 		slackID.set(localStorage.getItem("slackID") || "");
@@ -15,7 +16,11 @@
 		{#if $slackID == "" || $Hackatime == ""}
 			<NoKey />
 		{:else if $slackID != null || $Hackatime != null}
-			<Select />
+			{#if $currentView == "logging"}
+				<Logging />
+			{:else}
+				<Select />
+			{/if}
 		{/if}
 	</div>
 </div>

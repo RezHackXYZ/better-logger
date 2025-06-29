@@ -1,5 +1,5 @@
 <script>
-	import { slackID, selectedAppName, selectedHackatimeProjectName } from "$lib/store";
+	import { slackID, selectedAppName, selectedHackatimeProjectName, currentView } from "$lib/store";
 	import { onMount } from "svelte";
 
 	let Apps = null;
@@ -19,6 +19,10 @@
 		);
 		const res = await response.json();
 		HackatimeProjects = res.projects;
+	}
+
+	function startLogging() {
+		currentView.set("logging");
 	}
 
 	let localSelectedAppName = null;
@@ -46,26 +50,32 @@
 	</div>
 
 	{#if $selectedAppName != null}
-		<div class="flex flex-col">
-			<label for="hackatimeProject" class="text-black dark:text-white"
-				>Select a Hackatime project for {$selectedAppName}!</label
-			>
-			<select
-				class="inp"
-				onchange={() => selectedHackatimeProjectName.set(localSelectedHackatimeProjectName)}
-				bind:value={localSelectedHackatimeProjectName}
-				id="hackatimeProject"
-			>
-				<option value={null} disabled selected>Select a Hackatime project!</option>
+		{#if HackatimeProjects != null}
+			<div class="flex flex-col">
+				<label for="hackatimeProject" class="text-black dark:text-white"
+					>Select a Hackatime project for {$selectedAppName}!</label
+				>
+				<select
+					class="inp"
+					onchange={() => selectedHackatimeProjectName.set(localSelectedHackatimeProjectName)}
+					bind:value={localSelectedHackatimeProjectName}
+					id="hackatimeProject"
+				>
+					<option value={null} disabled selected>Select a Hackatime project!</option>
 
-				{#each HackatimeProjects as project}
-					<option value={project.name}>{project.name}</option>
-				{/each}
-			</select>
-		</div>
+					{#each HackatimeProjects as project}
+						<option value={project.name}>{project.name}</option>
+					{/each}
+				</select>
+			</div>
 
-		{#if $selectedHackatimeProjectName != null}
-			<button class="btn green">Start Logging Time!</button>
+			{#if $selectedHackatimeProjectName != null}
+				<button class="btn green" onclick={() => currentView.set("logging")}
+					>Start Logging Time!</button
+				>
+			{/if}
+		{:else}
+			<span class="text-black dark:text-white">loading...</span>
 		{/if}
 	{/if}
 {:else}
