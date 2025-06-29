@@ -4,6 +4,7 @@
 		selectedAppName,
 		selectedHackatimeProjectName,
 		Hackatime,
+		lang,
 	} from "$lib/store.js";
 	import { onMount, onDestroy } from "svelte";
 
@@ -38,7 +39,7 @@
 
 		// Send initial heartbeat immediately
 		fetch(
-			`/api/sendHeartbeat?token=${$Hackatime}&file=${$selectedAppName}&project=${$selectedHackatimeProjectName}`,
+			`/api/sendHeartbeat?token=${$Hackatime}&file=${$lang}&project=${$selectedHackatimeProjectName}`,
 		)
 			.then((response) => {
 				if (response.ok) {
@@ -64,8 +65,8 @@
 		if (hours > 0) parts.push(`${hours}h`);
 		if (minutes > 0) parts.push(`${minutes}m`);
 		if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
-		
-		elapsedTime = parts.join(' ');
+
+		elapsedTime = parts.join(" ");
 	}
 
 	onMount(() => {
@@ -92,9 +93,7 @@
 		</div>
 	</div>
 
-	<div
-		class="rounded-lg border-2 border-gray-300 p-4 dark:border-gray-600"
-	>
+	<div class="rounded-lg border-2 border-gray-300 p-4 dark:border-gray-600">
 		<h2 class="mb-1 text-2xl font-semibold text-black dark:text-white">Current Session</h2>
 		<div>
 			<div class="flex justify-between">

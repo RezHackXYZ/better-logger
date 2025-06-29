@@ -1,5 +1,5 @@
 <script>
-	import { slackID, selectedAppName, selectedHackatimeProjectName, currentView } from "$lib/store";
+	import { slackID, selectedAppName, selectedHackatimeProjectName, currentView, lang } from "$lib/store";
 	import { onMount } from "svelte";
 
 	let Apps = null;
@@ -27,6 +27,7 @@
 
 	let localSelectedAppName = null;
 	let localSelectedHackatimeProjectName = null;
+	let localLang = null;
 </script>
 
 {#if Apps != null}
@@ -70,6 +71,18 @@
 			</div>
 
 			{#if $selectedHackatimeProjectName != null}
+				<div class="flex flex-col">
+					<label for="language" class="text-black dark:text-white">Programming Language</label>
+					<input
+						class="inp"
+						type="text"
+						id="language"
+						placeholder="e.g., JavaScript, Python, Java..."
+						bind:value={localLang}
+						oninput={() => lang.set(localLang)}
+					/>
+				</div>
+
 				<button class="btn green" onclick={() => currentView.set("logging")}
 					>Start Logging Time!</button
 				>

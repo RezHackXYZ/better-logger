@@ -9,3 +9,5 @@ export let selectedHackatimeProjectName = writable(null);
 export let currentView = writable("menu");
 
 export let UsedHackatimeProjectName = writable(null);
+
+export let lang = writable(null);
