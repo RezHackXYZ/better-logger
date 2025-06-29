@@ -1,5 +1,11 @@
 <script>
-	import { slackID, selectedAppName, selectedHackatimeProjectName, currentView, lang } from "$lib/store";
+	import {
+		slackID,
+		selectedAppName,
+		selectedHackatimeProjectName,
+		currentView,
+		lang,
+	} from "$lib/store";
 	import { onMount } from "svelte";
 
 	let Apps = null;

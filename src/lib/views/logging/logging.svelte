@@ -104,6 +104,10 @@
 				<span class="text-gray-600 dark:text-gray-400">Hackatime Project:</span>
 				<span class="font-medium text-black dark:text-white">{$selectedHackatimeProjectName}</span>
 			</div>
+			<div class="flex justify-between">
+				<span class="text-gray-600 dark:text-gray-400">Language:</span>
+				<span class="font-medium text-black dark:text-white">{$lang}</span>
+			</div>
 		</div>
 	</div>
 
